@@ -1,0 +1,26 @@
+class SmallestInfiniteSet {
+  boolean[] set = new boolean[1000];
+  int min;
+
+  public SmallestInfiniteSet() {}
+  
+  public int popSmallest() {
+    var ret = min;
+    set[ret] = true;
+
+    while (min < 999 && set[++min]);
+    return ret + 1;
+  }
+  
+  public void addBack(int num) {
+    set[num - 1] = false;
+    min = Math.min(min, num - 1);
+  }
+}
+
+/**
+ * Your SmallestInfiniteSet object will be instantiated and called as such:
+ * SmallestInfiniteSet obj = new SmallestInfiniteSet();
+ * int param_1 = obj.popSmallest();
+ * obj.addBack(num);
+ */
